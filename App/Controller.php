@@ -22,6 +22,9 @@ abstract class Controller
     private function run(Request $request)
     {
         $view = $this->view($request);
+
+        // close request because all session logic was done in the controller.
+        $request->sessionObject()->close();
         $view->run($request);
     }
 

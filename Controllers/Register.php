@@ -14,7 +14,7 @@ use App\Request;
 use App\Response;
 use App\View;
 
-class Index extends Controller
+class Register extends Controller
 {
 
     /**
@@ -23,6 +23,6 @@ class Index extends Controller
      */
     protected function view(Request $request)
     {
-        return new View("landing.index");
+        return new View("landing.register");
     }
 }

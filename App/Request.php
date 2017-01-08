@@ -11,10 +11,14 @@ namespace App;
 
 class Request
 {
-    private $get;
-    private $post;
-    private $files;
-    private $viewbag;
+    private $_get;
+    private $_post;
+    private $_files;
+    private $_viewbag;
+    /**
+     * @var Session;
+     */
+    private $_session;
 
     /**
      * Request constructor.
@@ -22,12 +26,13 @@ class Request
      * @param array $post
      * @param array $files
      */
-    public function __construct($get, $post, $files)
+    public function __construct($get, $post, $files, $session)
     {
-        $this->get = $get;
-        $this->post = $post;
-        $this->files = $files;
-        $this->viewbag = [];
+        $this->_get = $get;
+        $this->_post = $post;
+        $this->_files = $files;
+        $this->_session = $session;
+        $this->_viewbag = [];
     }
 
     /**
@@ -37,7 +42,7 @@ class Request
      */
     public function get($name, $default = null)
     {
-        return $this->retrieve("get", $name, $default);
+        return $this->retrieve("_get", $name, $default);
     }
 
     /**
@@ -48,10 +53,11 @@ class Request
      */
     private function retrieve($item, $name, $default)
     {
-        if (!isset($this->$item[$name]))
+        $list = $this->$item;
+        if (!isset($list[$name]))
             return $default;
 
-        return $this->$item[$name];
+        return $list[$name];
     }
 
     /**
@@ -61,7 +67,7 @@ class Request
      */
     public function post($name, $default = null)
     {
-        return $this->retrieve("post", $name, $default);
+        return $this->retrieve("_post", $name, $default);
     }
 
     /**
@@ -71,7 +77,7 @@ class Request
      */
     public function files($name, $default = null)
     {
-        return $this->retrieve("files", $name, $default);
+        return $this->retrieve("_files", $name, $default);
     }
 
     /**
@@ -81,8 +87,14 @@ class Request
      */
     public function viewbag($name, $default = null)
     {
-        return $this->retrieve("viewbag", $name, $default);
+        return $this->retrieve("_viewbag", $name, $default);
     }
+
+    public function session($name, $default = null)
+    {
+        return $this->_session->get($name, $default);
+    }
+
 
     /**
      * @param string $name
@@ -90,7 +102,20 @@ class Request
      */
     public function set($name, $value)
     {
-        $this->viewbag[$name] = $value;
+        $this->_viewbag[$name] = $value;
     }
 
+    /**
+     * @param string $name
+     * @param mixed $value
+     */
+    public function save($name, $value)
+    {
+        $this->_session->save($name, $value);
+    }
+
+    public function sessionObject()
+    {
+        return $this->_session;
+    }
 }
