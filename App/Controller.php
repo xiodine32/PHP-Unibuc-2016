@@ -27,7 +27,7 @@ abstract class Controller
 
     /**
      * @param $request Request
-     * @return View
+     * @return Response
      */
     abstract protected function view(Request $request);
 }

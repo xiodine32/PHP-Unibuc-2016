@@ -9,7 +9,7 @@
 namespace App;
 
 
-class View
+class View extends Response
 {
     private $vr;
 

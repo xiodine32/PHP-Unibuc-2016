@@ -11,6 +11,7 @@ namespace Controllers;
 
 use App\Controller;
 use App\Request;
+use App\Response;
 use App\View;
 
 class Index extends Controller
@@ -18,7 +19,7 @@ class Index extends Controller
 
     /**
      * @param $request Request
-     * @return View
+     * @return Response
      */
     protected function view(Request $request)
     {
