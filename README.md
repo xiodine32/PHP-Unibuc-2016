@@ -2,6 +2,7 @@ PHP Project
 ===
 
 Made for Univesity of Bucharest's course in PHP, with:
+
 1. Love
 2. PHP 5.6
 3. Composer
