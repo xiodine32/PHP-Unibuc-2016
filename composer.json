@@ -1,0 +1,13 @@
+{
+  "require": {
+    "twitter/bootstrap": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "App/",
+      "Controllers\\": "Controllers/",
+      "Models\\": "Models/",
+      "Views\\": "views/"
+    }
+  }
+}
