@@ -12,5 +12,7 @@
     <h1>404</h1>
     <h2>Page Not Found</h2>
     <br>
-    <img src="<?= $engine::route("/res/img/404.jpg") ?>" alt="404 cat">
+    <div style="display: table; margin:0 auto;">
+        <img src="<?= $engine::route("/res/img/404.jpg") ?>" alt="404 cat" class="img-responsive">
+    </div>
 </div>
