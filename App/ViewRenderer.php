@@ -43,7 +43,8 @@ class ViewRenderer
      * @param Request $request
      * @param string $path
      */
-    private static function call(ViewRenderer $engine, Request $request, $path)
+    private static function call(/** @noinspection PhpUnusedParameterInspection */
+        ViewRenderer $engine, Request $request, $path)
     {
         /** @noinspection PhpIncludeInspection */
         require $path;
