@@ -10,9 +10,11 @@ namespace Controllers;
 
 
 use App\Controller;
+use App\Redirect;
 use App\Request;
 use App\Response;
 use App\View;
+use Models\User;
 
 class Login extends Controller
 {
@@ -23,6 +25,16 @@ class Login extends Controller
      */
     protected function view(Request $request)
     {
+        if ($request->session("user")) {
+            return new Redirect("/admin/");
+        }
+        if ($request->hasPost()) {
+            $user = User::where('email', '=', $request->post('email'));
+            if (password_verify($request->post('password'), $user->password)) {
+                $request->sessionObject()->save("user", $user);
+                return new Redirect("/admin/");
+            }
+        }
         return new View("landing.login");
     }
 }

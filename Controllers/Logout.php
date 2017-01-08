@@ -3,19 +3,17 @@
  * Created by PhpStorm.
  * User: xiodine
  * Date: 1/8/2017
- * Time: 5:36 PM
+ * Time: 9:53 PM
  */
 
 namespace Controllers;
-
 
 use App\Controller;
 use App\Redirect;
 use App\Request;
 use App\Response;
-use App\View;
 
-class Index extends Controller
+class Logout extends Controller
 {
 
     /**
@@ -24,9 +22,7 @@ class Index extends Controller
      */
     protected function view(Request $request)
     {
-        if ($request->session("user")) {
-            return new Redirect("/admin/");
-        }
-        return new View("landing.index");
+        $request->sessionObject()->destroy();
+        return new Redirect("/");
     }
 }

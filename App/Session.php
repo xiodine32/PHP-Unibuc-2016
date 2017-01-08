@@ -25,21 +25,31 @@ class Session
         session_start();
     }
 
-    public function get($name, $default)
+    public function get($name, $default = null)
     {
         if (!isset($_SESSION[$name]))
             return $default;
 
-        return $_SESSION[$name];
+        return unserialize($_SESSION[$name]);
     }
 
     public function save($key, $val)
     {
-        $_SESSION[$key] = $val;
+        $_SESSION[$key] = serialize($val);
     }
 
     public function close()
     {
         session_write_close();
+    }
+
+    public function has($name)
+    {
+        return isset($_SESSION[$name]);
+    }
+
+    public function destroy()
+    {
+        session_destroy();
     }
 }

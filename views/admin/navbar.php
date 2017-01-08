@@ -18,22 +18,33 @@ if (empty($engine)) die("no engine");
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= $engine->route('/') ?>">bibl.io</a>
+            <a class="navbar-brand" href="<?= $engine->route('/admin/') ?>">bibl.io</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="<?= $engine->is('/') ? 'active' : '' ?>"><a href="<?= $engine->route('/') ?>"><i
-                                class="fa fa-home" aria-hidden="true"></i> Landing Page</a></li>
+                <li class="<?= $engine->is('/admin/') ? 'active' : '' ?>"><a href="<?= $engine->route('/admin/') ?>"><i
+                                class="fa fa-home" aria-hidden="true"></i> Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="<?= $engine->is('/login') ? 'active' : '' ?>"><a href="<?= $engine->route('/login') ?>">Login
-                        <i class="fa fa-users" aria-hidden="true"></i></a></li>
-                <li class="<?= $engine->is('/register') ? 'active' : '' ?>"><a
-                            href="<?= $engine->route('/register') ?>">Register <i class="fa fa-address-book"
-                                                                                  aria-hidden="true"></i></a></li>
+                <li>
+                    <a href="<?= $engine->route('/logout') ?>">
+                        Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </a>
+                </li>
             </ul>
+            <form class="navbar-form navbar-right" method="post" action="<?= $engine->route('/search') ?>">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"
+                                                                             aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

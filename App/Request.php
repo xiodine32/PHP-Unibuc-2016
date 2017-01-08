@@ -90,6 +90,64 @@ class Request
         return $this->retrieve("_viewbag", $name, $default);
     }
 
+    /**
+     * @param string $name
+     * @return boolean
+     */
+    public function hasGet($name = null)
+    {
+        return $this->hasRetrieve("_get", $name);
+    }
+
+    /**
+     * @param string $item
+     * @param string|string[] $name
+     * @return bool
+     */
+    private function hasRetrieve($item, $name)
+    {
+        $list = $this->$item;
+
+        if ($name === null)
+            return !empty($list);
+
+        if (!is_array($name))
+            $name = [$name];
+
+        foreach ($name as $item) {
+            if (!isset($list[$item]))
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param string $name
+     * @return boolean
+     */
+    public function hasPost($name = null)
+    {
+        return $this->hasRetrieve("_post", $name);
+    }
+
+    /**
+     * @param string $name
+     * @return boolean
+     */
+    public function hasFiles($name = null)
+    {
+        return $this->hasRetrieve("_files", $name);
+    }
+
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public function hasViewbag($name = null)
+    {
+        return $this->hasRetrieve("_viewbag", $name);
+    }
+
     public function session($name, $default = null)
     {
         return $this->_session->get($name, $default);
@@ -117,5 +175,10 @@ class Request
     public function sessionObject()
     {
         return $this->_session;
+    }
+
+    public function allPost()
+    {
+        return $this->_post;
     }
 }

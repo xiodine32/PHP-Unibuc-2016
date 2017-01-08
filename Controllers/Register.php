@@ -10,9 +10,11 @@ namespace Controllers;
 
 
 use App\Controller;
+use App\Redirect;
 use App\Request;
 use App\Response;
 use App\View;
+use Models\User;
 
 class Register extends Controller
 {
@@ -23,6 +25,19 @@ class Register extends Controller
      */
     protected function view(Request $request)
     {
-        return new View("landing.register");
+        if ($request->session("user")) {
+            return new Redirect("/admin/");
+        }
+        if (!$request->hasPost(User::$required))
+            return new View("landing.register");
+
+        $user = new User();
+        $user->fill($request->allPost());
+        $user->password = password_hash($user->password, PASSWORD_BCRYPT);
+        $user->save();
+
+        $request->sessionObject()->save("user", $user);
+
+        return new Redirect("/admin/");
     }
 }

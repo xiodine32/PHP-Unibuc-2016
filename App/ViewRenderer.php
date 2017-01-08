@@ -69,7 +69,7 @@ class ViewRenderer
         return $this->route("/res/css/{$path}");
     }
 
-    public function route($url)
+    public static function route($url)
     {
         return $url;
     }
