@@ -20,17 +20,27 @@ class Model
     private $modified;
     private $add;
     private $update;
+    private $setExists = [];
 
     function __construct($fields = [])
     {
         $this->modified = false;
-        $this->retrieved = false;
+        $this->retrieved = count($fields) !== 0;
         $this->add = [];
         $this->update = [];
         $this->fields = $fields;
     }
 
-    static function where($key, $operator, $value)
+    /**
+     * @param $id
+     * @return static
+     */
+    public static function find($id)
+    {
+        return static::where('id', '=', $id);
+    }
+
+    public static function where($key, $operator, $value)
     {
         $table = (new static)->tableName();
         $result = Database::singleton()->get("SELECT * FROM {$table} WHERE {$key} {$operator} ?", [$value]);
@@ -65,10 +75,33 @@ class Model
         return $result;
     }
 
+    public static function all()
+    {
+        $table = (new static)->tableName();
+        $result = Database::singleton()->getAll("SELECT * FROM {$table}");
+        $returnValues = [];
+        foreach ($result as $item) {
+            $item = new static($item);
+            $item->retrieved = true;
+            $item->modified = false;
+
+            $returnValues[] = $item;
+        }
+        return $returnValues;
+    }
+
     public function fill($array)
     {
         foreach ($this->fillable as $item) {
-            if (isset($array[$item]))
+            if (isset($array[$item]) && $this->$item !== $array[$item])
+                $this->$item = $array[$item];
+        }
+    }
+
+    public function fillEmpty($array)
+    {
+        foreach ($this->fillable as $item) {
+            if (!empty($array[$item]) && $this->$item !== $array[$item])
                 $this->$item = $array[$item];
         }
     }
@@ -83,13 +116,24 @@ class Model
 
     function __set($name, $value)
     {
-        if (isset($this->fields[$name])) {
+        // try to call setter
+        $method_name = "set" . ucfirst($name);
+        if (empty($this->setExists[$name]) && method_exists($this, $method_name)) {
+            $this->setExists[$name] = true;
+            $this->$method_name($value);
+            unset($this->setExists[$name]);
+            return;
+        }
+
+        // if field already exists
+        if (isset($this->fields[$name]) && empty($this->add[$name])) {
             $this->modified = true;
             $this->update[$name] = $value;
             $this->fields[$name] = $value;
             return;
         }
 
+        // add new field
         $this->modified = true;
         $this->add[$name] = $value;
         $this->fields[$name] = $value;
@@ -98,7 +142,8 @@ class Model
     function save()
     {
         if ($this->retrieved) {
-            $this->saveUpdate();
+            if ($this->modified)
+                $this->saveUpdate();
             return;
         }
 
@@ -138,6 +183,17 @@ class Model
         $this->fields[$this->primary] = Database::singleton()->lastInsertId();
         $this->retrieved = true;
         $this->modified = false;
+    }
+
+    function delete()
+    {
+        if (!$this->retrieved)
+            return;
+
+        $table = $this->tableName();
+
+        $assoc[] = $this->fields[$this->primary];
+        Database::singleton()->query("DELETE FROM {$table} WHERE `{$this->primary}` = ?", $assoc);
     }
 
 }

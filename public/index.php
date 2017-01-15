@@ -26,11 +26,17 @@ foreach (explode("/", $page) as $item) {
 }
 $realPath .= ".php";
 
-if (!file_exists($realPath))
-    $path = "\\Controllers\\Controller404";
+$request = initRequest($requestPage);
 
-$class = new $path(initRequest($requestPage));
+try {
+    if (!file_exists($realPath))
+        $path = "\\Controllers\\Controller404";
 
+    $class = new $path($request);
+
+} catch (Exception $e) {
+    $class = new \Controllers\Controller505($request, $e);
+}
 
 function initRequest($requestPage)
 {

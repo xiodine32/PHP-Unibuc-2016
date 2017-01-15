@@ -12,6 +12,7 @@ namespace Controllers\Admin;
 use App\Request;
 use App\Response;
 use App\View;
+use Models\User;
 
 class Index extends ControllerAdmin
 {
@@ -22,6 +23,7 @@ class Index extends ControllerAdmin
      */
     protected function viewAdmin(Request $request)
     {
+        $request->set('users', User::all());
         return new View("admin.index");
     }
 }

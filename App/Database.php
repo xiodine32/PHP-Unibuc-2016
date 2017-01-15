@@ -33,26 +33,28 @@ class Database
         return self::$singleton;
     }
 
-    public function get($statement, $assoc)
+    public function get($statement, $assoc = [])
     {
-        $v = $this->pdo->prepare($statement);
+        $v = $this->prepare($statement);
         $v->execute($assoc);
         return $v->fetch();
     }
 
-    public function getAll($statement, $assoc)
+    public function prepare($statement)
     {
-        $v = $this->pdo->prepare($statement);
+        return $this->pdo->prepare($statement);
+    }
+
+    public function getAll($statement, $assoc = [])
+    {
+        $v = $this->prepare($statement);
         $v->execute($assoc);
         return $v->fetchAll();
     }
 
-    public function query($statement, $assoc)
+    public function query($statement, $assoc = [])
     {
-//        var_dump($statement);
-//        var_dump($assoc);
-//        die();
-        $v = $this->pdo->prepare($statement);
+        $v = $this->prepare($statement);
         return $v->execute($assoc);
     }
 

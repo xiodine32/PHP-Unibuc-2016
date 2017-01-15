@@ -35,7 +35,10 @@ class Session
 
     public function save($key, $val)
     {
-        $_SESSION[$key] = serialize($val);
+        if ($val !== null)
+            $_SESSION[$key] = serialize($val);
+        else
+            unset($_SESSION[$key]);
     }
 
     public function close()

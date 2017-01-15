@@ -33,7 +33,7 @@ class Register extends Controller
 
         $user = new User();
         $user->fill($request->allPost());
-        $user->password = password_hash($user->password, PASSWORD_BCRYPT);
+
         $user->save();
 
         $request->sessionObject()->save("user", $user);
