@@ -13,9 +13,13 @@ use App\Controller;
 use App\Redirect;
 use App\Request;
 use App\Session;
+use Models\User;
 
 abstract class ControllerAdmin extends Controller
 {
+    /**
+     * @var $user User
+     */
     protected $user;
 
     protected function view(Request $request)

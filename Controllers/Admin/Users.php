@@ -9,6 +9,7 @@
 namespace Controllers\Admin;
 
 
+use App\Redirect;
 use App\Request;
 use App\Response;
 use App\View;
@@ -23,6 +24,9 @@ class Users extends ControllerAdmin
      */
     protected function viewAdmin(Request $request)
     {
+        if (!$this->user->hasRole(User::ADMINISTRATOR))
+            return new Redirect("admin.index");
+
         if ($id = $request->post('delete', false)) {
             User::find($id)->delete();
         }

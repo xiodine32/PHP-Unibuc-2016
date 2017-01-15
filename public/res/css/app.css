@@ -3,3 +3,8 @@
     font-weight: bold;
     line-height: 2em;
 }
+
+.nav.nav-tabs > li.admin > a {
+    background-color: #ffd9d9;
+    border-color: #ffcccc;
+}

@@ -20,6 +20,9 @@ use App\Model;
  */
 class User extends Model
 {
+    const ADMINISTRATOR = "Administrator";
+    const EDITOR = "Editor";
+
     static $required = ['name', 'email', 'password'];
     protected $fillable = ['name', 'email', 'password'];
 
