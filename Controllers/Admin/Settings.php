@@ -9,13 +9,12 @@
 namespace Controllers\Admin;
 
 
+use App\Redirect;
 use App\Request;
 use App\Response;
-use App\Settings;
-use App\View;
-use Models\User;
+use App\Settings as S;
 
-class Index extends ControllerAdmin
+class Settings extends ControllerAdmin
 {
 
     /**
@@ -24,9 +23,9 @@ class Index extends ControllerAdmin
      */
     protected function viewAdmin(Request $request)
     {
-        $request->set('users', User::all());
-        Categories::addTreeToRequest($request);
-        $request->set('settings', Settings::getAllSettings());
-        return new View("admin.index");
+        if ($name = $request->post("toggle")) {
+            S::set($name, !S::get($name));
+        }
+        return new Redirect("/admin/");
     }
 }

@@ -34,6 +34,7 @@ class Login extends Controller
                 $request->sessionObject()->save("user", $user);
                 return new Redirect("/admin/");
             }
+            $request->set("error", true);
         }
         return new View("landing.login");
     }

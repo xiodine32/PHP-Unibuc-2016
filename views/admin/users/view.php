@@ -28,9 +28,9 @@
                  */
                 ?>
                 <tr>
-                    <td><?= $user->id ?></td>
-                    <td><?= $user->name ?></td>
-                    <td><?= $user->email ?></td>
+                    <td><?= htmlentities($user->id) ?></td>
+                    <td><?= htmlentities($user->name) ?></td>
+                    <td><?= htmlentities($user->email) ?></td>
                     <td><?= join(", ", $user->roles(false)) ?></td>
                     <td style="width: 120px;">
                         <form action="<?= $engine->route('/admin/users') ?>" method="post">

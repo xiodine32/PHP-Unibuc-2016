@@ -9,6 +9,8 @@
 namespace App;
 
 
+use Exception;
+
 class Database
 {
     private static $singleton = null;
@@ -36,7 +38,8 @@ class Database
     public function get($statement, $assoc = [])
     {
         $v = $this->prepare($statement);
-        $v->execute($assoc);
+        if (!$this->runExecute($assoc, $v))
+            return false;
         return $v->fetch();
     }
 
@@ -45,17 +48,34 @@ class Database
         return $this->pdo->prepare($statement);
     }
 
+    /**
+     * @param $assoc []
+     * @param $v \PDOStatement
+     * @return bool
+     */
+    private function runExecute($assoc, $v)
+    {
+        try {
+            $v->execute($assoc);
+            return true;
+        } catch (Exception $e) {
+            return false;
+
+        }
+    }
+
     public function getAll($statement, $assoc = [])
     {
         $v = $this->prepare($statement);
-        $v->execute($assoc);
+        if (!$this->runExecute($assoc, $v))
+            return false;
         return $v->fetchAll();
     }
 
     public function query($statement, $assoc = [])
     {
         $v = $this->prepare($statement);
-        return $v->execute($assoc);
+        return $this->runExecute($assoc, $v);
     }
 
     public function lastInsertId()

@@ -38,7 +38,7 @@ function recursive($tree, $index = 0)
         <div style="padding-left: 30px;">
 
             <h3 data-leaf="<?= $item->id ?>" class="leaf">
-                <?= $item->name ?>
+                <?= htmlentities($item->name) ?>
                 <?= FormHelper::start('/admin/categories', 'post', null, ['class' => 'pull-right']) ?>
                 <span class="btn-group">
                     <a href="#form_<?= $item->id ?>" data-toggle="collapse" data-target="#form_<?= $item->id ?>"

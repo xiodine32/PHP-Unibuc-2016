@@ -21,7 +21,10 @@ class Model
     private $modified;
     private $add;
     private $update;
-    private $setExists = [];
+    private /** @noinspection PhpUnusedPrivateFieldInspection */
+        $setExists = [];
+    private /** @noinspection PhpUnusedPrivateFieldInspection */
+        $getExists = [];
 
     function __construct($fields = [])
     {
@@ -45,6 +48,10 @@ class Model
     {
         $table = (new static)->tableName();
         $result = Database::singleton()->get("SELECT * FROM {$table} WHERE {$key} {$operator} ?", [$value]);
+
+        if ($result === false)
+            return false;
+
         $return = new static($result);
         $return->retrieved = true;
         $return->modified = false;
@@ -112,6 +119,9 @@ class Model
 
     function __get($name)
     {
+        if ($this->canApplyMagic($name, "get"))
+            return $this->applyMagic($name, "get");
+
         if (empty($this->fields[$name]))
             return null;
 
@@ -120,12 +130,9 @@ class Model
 
     function __set($name, $value)
     {
-        // try to call setter
-        $method_name = "set" . ucfirst($name);
-        if (empty($this->setExists[$name]) && method_exists($this, $method_name)) {
-            $this->setExists[$name] = true;
-            $this->$method_name($value);
-            unset($this->setExists[$name]);
+        // try to call magic (aka set{$Name})
+        if ($this->canApplyMagic($name, "set")) {
+            $this->applyMagic($name, "set", $value);
             return;
         }
 
@@ -143,15 +150,58 @@ class Model
         $this->fields[$name] = $value;
     }
 
-    function save()
+    private function canApplyMagic($name, $type)
     {
-        if ($this->retrieved) {
-            if ($this->modified)
-                $this->saveUpdate();
-            return;
+
+        list($method_name, $duplicateArray) = $this->getMagicNames($name, $type);
+
+        $method_exists = method_exists($this, $method_name);
+
+        $b = empty($this->{$duplicateArray}[$name]) && $method_exists;
+
+//        $r = $b ? 'true' : 'false';
+
+//        if ($method_exists)
+//            echo "<pre>{$duplicateArray}[{$name}]={$r}</pre>";
+
+        return $b;
+    }
+
+    private function getMagicNames($name, $type)
+    {
+        return [$type . ucfirst($name), "{$type}Exists"];
+    }
+
+    private function applyMagic($name, $type)
+    {
+        // caller name
+        list($magicMethodName, $duplicateArray) = $this->getMagicNames($name, $type);
+
+        // if name's already there, actually retrieve the value.
+        $this->{$duplicateArray}[$name] = true;
+
+        if (func_num_args() >= 3) {
+            // setters
+            $this->{$magicMethodName}(func_get_arg(2));
+            unset($this->{$duplicateArray}[$name]);
+            return true;
         }
 
-        $this->saveNew();
+        $value = $this->{$magicMethodName}();
+        unset($this->{$duplicateArray}[$name]);
+        return $value;
+    }
+
+    function save()
+    {
+//        var_dump($this);
+//        die();
+        if ($this->retrieved) {
+            if ($this->modified)
+                return $this->saveUpdate();
+        }
+
+        return $this->saveNew();
     }
 
     private function saveUpdate()
@@ -165,9 +215,13 @@ class Model
         }
         $assoc[] = $this->fields[$this->primary];
         $sets = join(", ", $updates);
-        Database::singleton()->query("UPDATE {$table} SET {$sets} WHERE `{$this->primary}` = ?", $assoc);
+        $v = Database::singleton()->query("UPDATE {$table} SET {$sets} WHERE `{$this->primary}` = ?", $assoc);
+        if (!$v)
+            return false;
+
         $this->retrieved = true;
         $this->modified = false;
+        return true;
     }
 
     private function saveNew()
@@ -183,10 +237,14 @@ class Model
         }
         $sets = join(', ', $sets);
         $items = join(', ', $items);
-        Database::singleton()->query("INSERT INTO {$table} ({$sets}) VALUES ({$items})", $assoc);
+        $v = Database::singleton()->query("INSERT INTO {$table} ({$sets}) VALUES ({$items})", $assoc);
+        if (!$v)
+            return false;
+
         $this->fields[$this->primary] = Database::singleton()->lastInsertId();
         $this->retrieved = true;
         $this->modified = false;
+        return true;
     }
 
     function delete()

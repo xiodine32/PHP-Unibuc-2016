@@ -13,6 +13,7 @@ use App\Controller;
 use App\Redirect;
 use App\Request;
 use App\Response;
+use App\Settings;
 use App\View;
 use Models\User;
 
@@ -31,10 +32,16 @@ class Register extends Controller
         if (!$request->hasPost(User::$required))
             return new View("landing.register");
 
+        if (Settings::get("DISABLE_REGISTER"))
+            return new View("landing.register");
+
         $user = new User();
         $user->fill($request->allPost());
 
-        $user->save();
+        if (!$user->save()) {
+            $request->set('error', true);
+            return new View("landing.register");
+        }
 
         $request->sessionObject()->save("user", $user);
 

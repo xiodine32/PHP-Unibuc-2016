@@ -5,16 +5,24 @@
  * Date: 1/8/2017
  * Time: 7:01 PM
  * @var \App\ViewRenderer $engine
+ * @var \App\Request $request
  */
+$hasError = $request->viewbag('error', false);
 ?>
 <div class="container">
     <h2>Login</h2>
     <hr>
+    <?php if ($hasError): ?>
+        <div class="alert alert-danger">
+            Username and/or password not found!
+        </div>
+    <?php endif ?>
     <form action="<?= $engine->route("/login") ?>" method="post" class="form form-horizontal">
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email: </label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" required
+                       value="<?= $request->post('email', '') ?>">
             </div>
         </div>
         <div class="form-group">

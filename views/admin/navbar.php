@@ -34,7 +34,7 @@ if (empty($engine)) die("no engine");
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         <i class="fa fa-user"></i>
-                        <?= $request->session("user")->name ?>
+                        <?= htmlentities($request->session("user")->name) ?>
                     </a>
                     <ul class="dropdown-menu">
                         <?php if ($request->session('user')->hasRole(\Models\User::ADMINISTRATOR)): ?>
