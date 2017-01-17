@@ -24,6 +24,7 @@ class Index extends ControllerAdmin
     protected function viewAdmin(Request $request)
     {
         $request->set('users', User::all());
+        Categories::addTreeToRequest($request);
         return new View("admin.index");
     }
 }

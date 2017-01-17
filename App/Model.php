@@ -11,6 +11,7 @@ namespace App;
 
 class Model
 {
+    protected $tableName = null;
     protected $fillable = [];
     protected $primary = 'id';
 
@@ -50,8 +51,11 @@ class Model
         return $return;
     }
 
-    protected function tableName()
+    private function tableName()
     {
+        if ($this->tableName !== null)
+            return $this->tableName;
+
         $name = get_class($this);
         $pos = strrpos($name, '\\');
         if ($pos !== false)
@@ -75,10 +79,10 @@ class Model
         return $result;
     }
 
-    public static function all()
+    public static function all($order = '')
     {
         $table = (new static)->tableName();
-        $result = Database::singleton()->getAll("SELECT * FROM {$table}");
+        $result = Database::singleton()->getAll("SELECT * FROM {$table} {$order}");
         $returnValues = [];
         foreach ($result as $item) {
             $item = new static($item);

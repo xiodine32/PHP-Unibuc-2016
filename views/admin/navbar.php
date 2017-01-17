@@ -43,7 +43,12 @@ if (empty($engine)) die("no engine");
                                     Users</a>
                             </li>
                         <?php endif ?>
-
+                        <?php if ($request->session('user')->hasRole(\Models\User::EDITOR)): ?>
+                            <li>
+                                <a href="<?= $engine->route('/admin/categories') ?>"><i class="fa fa-list"></i> Edit
+                                    Categories</a>
+                            </li>
+                        <?php endif ?>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="<?= $engine->route('/logout') ?>">

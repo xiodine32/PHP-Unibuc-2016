@@ -11,7 +11,7 @@ use Models\User;
 
 ?>
 <div class="container">
-    <h1>Tools</h1>
+    <h1>Quick tools</h1>
     <hr>
     <div>
 

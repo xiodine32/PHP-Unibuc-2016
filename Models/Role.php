@@ -12,13 +12,10 @@ namespace Models;
 use App\Model;
 
 /**
- * @property string id
+ * @property int id
  * @property string name
- * @property string email
- * @property string password
  */
 class Role extends Model
 {
-    static $required = ['name'];
     protected $fillable = ['name'];
 }

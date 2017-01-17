@@ -15,11 +15,15 @@ class FormHelper
     {
         self::assure($optionals, 'action', $action);
         self::assure($optionals, 'method', $method);
-        self::assure($optionals, 'class', 'form-horizontal');
+
+        if (!empty($title))
+            self::assure($optionals, 'class', 'form-horizontal');
 
         $text = "<form " . self::aToM($optionals) . ">\n";
-        $text .= "<fieldset>\n";
-        $text .= "<legend>{$title}</legend>\n";
+        if (!empty($title)) {
+            $text .= "<fieldset>\n";
+            $text .= "<legend>{$title}</legend>\n";
+        }
         return $text;
     }
 
