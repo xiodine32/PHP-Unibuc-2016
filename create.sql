@@ -1,5 +1,3 @@
-# Create SQL Query
-
 CREATE TABLE books
 (
   id          INT(11) PRIMARY KEY                                                                                                                           NOT NULL AUTO_INCREMENT,
@@ -50,6 +48,17 @@ CREATE TABLE settings
 );
 CREATE UNIQUE INDEX settings_name_uindex
   ON settings (name);
+CREATE TABLE statistics
+(
+  id              INT(11) PRIMARY KEY                NOT NULL AUTO_INCREMENT,
+  request_method  VARCHAR(10)                        NOT NULL,
+  query_string    TEXT                               NOT NULL,
+  http_referer    TEXT                               NOT NULL,
+  http_user_agent TEXT                               NOT NULL,
+  remote_addr     TEXT                               NOT NULL,
+  request_uri     TEXT                               NOT NULL,
+  created_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
 CREATE TABLE userroles
 (
   user_id INT(11) NOT NULL,

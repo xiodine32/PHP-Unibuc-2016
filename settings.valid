@@ -8,8 +8,7 @@ DISABLE_REGISTER | false
 COLLAPSE | false
 subreddits | ["books", "bookporn", "ebooks", "bookdownloads"]
 cache | 3600
-pagination | 10
-statistics | []
+logging | 1000
 mail_server | "smtp.mailtrap.io"
 mail_username | ""
 mail_password | ""

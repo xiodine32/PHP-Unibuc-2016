@@ -6,11 +6,7 @@
  * Time: 4:38 AM
  */
 
-namespace Controllers\Admin;
-
-
-use App\Request;
-use App\View;
+namespace App;
 
 class Partial extends View
 {

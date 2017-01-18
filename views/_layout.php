@@ -23,6 +23,9 @@ if (empty($engine)) die("no engine");
 <?php $engine->propagate(); ?>
 <script src="<?= $engine->js("jquery.min.js") ?>"></script>
 <script src="<?= $engine->js("bootstrap.min.js") ?>"></script>
+<script src="<?= $engine->js("chart.bundle.min.js") ?>"></script>
+<script>window.timeInterval = parseInt("<?=\App\Settings::get('logging')?>");</script>
+<script src="<?= $engine->js("analytics.js") ?>"></script>
 <?php $engine->includeInlineJS(); ?>
 </body>
 </html>

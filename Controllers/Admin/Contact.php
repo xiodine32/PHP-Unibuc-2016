@@ -9,6 +9,7 @@
 namespace Controllers\Admin;
 
 
+use App\Partial;
 use App\Request;
 use App\Settings;
 use App\View;

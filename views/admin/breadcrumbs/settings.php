@@ -70,7 +70,7 @@ use App\FormHelper;
             <?= FormHelper::end() ?>
         </li>
     <?php endforeach; ?>
-    <?php foreach (['cache', 'pagination'] as $item): ?>
+    <?php foreach (['cache', 'logging'] as $item): ?>
         <li>
             <?= FormHelper::start('/admin/settings', 'post', null, ['class' => 'form-horizontal']) ?>
             <div class="form-group">
