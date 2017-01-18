@@ -23,13 +23,15 @@ $hasError = $request->viewbag('error', false);
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <input type="text" class="form-control" id="name" name="name" required
+                           value="<?= $request->post('name', '') ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email: </label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" required
+                           value="<?= $request->post('email', '') ?>">
                 </div>
             </div>
             <div class="form-group">
