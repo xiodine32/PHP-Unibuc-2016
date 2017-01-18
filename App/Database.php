@@ -59,6 +59,8 @@ class Database
             $v->execute($assoc);
             return true;
         } catch (Exception $e) {
+            if (Settings::get('DEBUG'))
+                throw $e;
             return false;
 
         }

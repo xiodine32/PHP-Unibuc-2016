@@ -1,3 +1,8 @@
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
 .list-loud {
     text-transform: uppercase;
     font-weight: bold;
@@ -7,4 +12,56 @@
 .nav.nav-tabs > li.admin > a {
     background-color: #ffd9d9;
     border-color: #ffcccc;
+}
+
+.story img {
+    width: 100%;
+}
+
+.story {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.25em;
+
+}
+
+.story .well {
+    box-shadow: 1px 3px 5px -2px #000;
+    padding: 15px;
+}
+
+.story .category {
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.panel-body > .nav.nav-tabs {
+    margin-top: -16px;
+    margin-left: -16px;
+    margin-right: -16px;
+}
+
+.leaf {
+    background-color: #ccc;
+    line-height: 26px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+.noa {
+    color: #000;
+    text-decoration: none;
+}
+
+.noa:hover, .noa:active, .noa:focus {
+    text-decoration: none;
+}
+
+.jumbotron.landing {
+    margin-top: -20px;
+    background-image: url('../img/back.bmp');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-y: 78%;
+    text-shadow: 0 0 15px #fff;
 }

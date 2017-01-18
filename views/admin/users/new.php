@@ -12,8 +12,8 @@ use App\FormHelper;
 <?= FormHelper::start($engine->route("/admin/users"), "post", "Add user") ?>
 <?= FormHelper::input("text", "name", "name", "Name"); ?>
 <?= FormHelper::input("email", "email", "email", "Email"); ?>
-<?= FormHelper::input("password", "password", "password", "Password"); ?>
-<?= FormHelper::input("password", "password_confirm", "password_confirm", "Repeat Password"); ?>
+<?= FormHelper::input("password", "encrypted", "encrypted", "Password"); ?>
+<?= FormHelper::input("password", "encrypted_confirm", "encrypted_confirm", "Repeat Password"); ?>
 <div class="form-group">
     <div class="col-sm-4 col-sm-offset-4">
         <div class="btn-group" data-toggle="buttons">

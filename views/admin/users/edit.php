@@ -13,7 +13,7 @@ use App\FormHelper;
 <?= FormHelper::start($engine->route("/admin/users"), "post", "Edit user") ?>
 <?= FormHelper::input("text", "name", "name", "Name", ['value' => $request->viewbag('item')->name]); ?>
 <?= FormHelper::input("email", "email", "email", "Email", ['value' => $request->viewbag('item')->email]); ?>
-<?= FormHelper::input("password", "password", "password", "Password"); ?>
+<?= FormHelper::input("password", "encrypted", "encrypted", "Password"); ?>
     <div class="form-group">
         <div class="col-sm-4 col-sm-offset-4">
             <div class="btn-group" data-toggle="buttons">

@@ -26,6 +26,17 @@ class Settings extends ControllerAdmin
         if ($name = $request->post("toggle")) {
             S::set($name, !S::get($name));
         }
+        if ($name = $request->post('save_array')) {
+            $json = explode("\n", trim($request->post($name)));
+            foreach ($json as &$obj) {
+                $obj = trim($obj);
+            }
+            unset($obj);
+            S::set($name, $json);
+        }
+        if ($name = $request->post('save_number')) {
+            S::set($name, intval($request->post($name)));
+        }
         return new Redirect("/admin/");
     }
 }

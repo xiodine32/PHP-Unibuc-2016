@@ -177,7 +177,6 @@ class Model
         // caller name
         list($magicMethodName, $duplicateArray) = $this->getMagicNames($name, $type);
 
-        // if name's already there, actually retrieve the value.
         $this->{$duplicateArray}[$name] = true;
 
         if (func_num_args() >= 3) {
@@ -199,6 +198,7 @@ class Model
         if ($this->retrieved) {
             if ($this->modified)
                 return $this->saveUpdate();
+            return true;
         }
 
         return $this->saveNew();

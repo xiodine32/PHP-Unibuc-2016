@@ -14,9 +14,14 @@ use Models\Setting;
 class Settings
 {
     private static $options = [];
+    private static $optionsDefault = [];
 
     private static $cached = [];
 
+    /**
+     * @param $name
+     * @return bool|mixed
+     */
     public static function get($name)
     {
         if (!self::isAllowed($name))
@@ -40,12 +45,17 @@ class Settings
             $trim = trim($file_get_contents);
             $explode = explode("\n", $trim);
             $fat = [];
+            $fat2 = [];
             foreach ($explode as $item) {
                 if (substr($item, 0, 1) === "#" || !strlen($item))
                     continue;
-                $fat[] = $item;
+                list($item, $default) = explode("|", $item);
+                $itemTrim = trim($item);
+                $fat[] = $itemTrim;
+                $fat2[$itemTrim] = json_decode(trim($default), true);
             }
             self::$options = $fat;
+            self::$optionsDefault = $fat2;
         }
     }
 
@@ -56,7 +66,7 @@ class Settings
             if ($result === false) {
                 $result = new Setting();
                 $result->name = $name;
-                $result->json = false;
+                $result->json = self::$optionsDefault[$name];
                 $result->save();
             }
             self::$cached[$name] = $result;

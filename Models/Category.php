@@ -22,4 +22,11 @@ class Category extends Model
     public $children = [];
     protected $fillable = ['name', 'parent_id'];
     protected $tableName = "categories";
+
+    public static function all($order = '')
+    {
+        return parent::all($order . ' ORDER BY ifnull(parent_id, -1) ASC');
+    }
+
+
 }

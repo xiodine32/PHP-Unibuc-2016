@@ -17,6 +17,7 @@ use App\Model;
  * @property int id
  * @property string name
  * @property string value
+ * @property mixed json
  */
 class Setting extends Model
 {

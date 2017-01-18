@@ -48,6 +48,10 @@ if (empty($engine)) die("no engine");
                                 <a href="<?= $engine->route('/admin/categories') ?>"><i class="fa fa-list"></i> Edit
                                     Categories</a>
                             </li>
+                            <li>
+                                <a href="<?= $engine->route('/admin/books') ?>"><i class="fa fa-book"></i> Edit
+                                    Books</a>
+                            </li>
                         <?php endif ?>
                         <li role="separator" class="divider"></li>
                         <li>
@@ -57,25 +61,15 @@ if (empty($engine)) die("no engine");
                         </li>
                     </ul>
                 </li>
-
             </ul>
-            <form class="navbar-form navbar-right" method="post" action="<?= $engine->route('/search') ?>">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"
-                                                                             aria-hidden="true"></i></button>
-                        </span>
-                    </div>
-                </div>
-            </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="jumbotron" style="margin-top: -20px;">
+<div class="jumbotron landing">
+    <a href="/" style="color: inherit; text-decoration: none;">
     <div class="text-center">
         <h1>bibl.io</h1>
-        <h2>For all your reading needs</h2>
+        <h2>for all your reading needs</h2>
     </div>
+    </a>
 </div>

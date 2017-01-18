@@ -72,7 +72,7 @@ class Categories extends ControllerAdmin
 
     private static function getAll()
     {
-        return Category::all('ORDER BY ifnull(parent_id, -1) ASC');
+        return Category::all();
     }
 
     private static function recursiveAdd($roots, $itemToAdd)

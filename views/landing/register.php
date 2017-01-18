@@ -33,15 +33,15 @@ $hasError = $request->viewbag('error', false);
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password: </label>
+                <label for="encrypted" class="col-sm-2 control-label">Password: </label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <input type="password" class="form-control" id="encrypted" name="encrypted" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="repeat_password" class="col-sm-2 control-label">Repeat Password: </label>
+                <label for="repeat_encrypted" class="col-sm-2 control-label">Repeat Password: </label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="repeat_password" name="repeat_password" required>
+                    <input type="password" class="form-control" id="repeat_encrypted" name="repeat_encrypted" required>
                 </div>
             </div>
             <div class="form-group">
@@ -62,8 +62,8 @@ $hasError = $request->viewbag('error', false);
 <script>
     (function () {
         $("#submit").click(function (e) {
-            var passwordValue = $("#password").val();
-            var repeatPasswordValue = $("#repeat_password").val();
+            var passwordValue = $("#encrypted").val();
+            var repeatPasswordValue = $("#repeat_encrypted").val();
             if (passwordValue != repeatPasswordValue || !repeatPasswordValue) {
                 e.stopPropagation();
                 e.preventDefault();

@@ -43,7 +43,8 @@ function recursive($tree, $index = 0)
                 <span class="btn-group">
                     <a href="#form_<?= $item->id ?>" data-toggle="collapse" data-target="#form_<?= $item->id ?>"
                        class="btn btn-success btn-sm">+</a>
-                    <button name="remove" value="<?= $item->id ?>" class="btn btn-danger btn-sm">-</button>
+                    <button name="remove" value="<?= $item->id ?>" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Are you sure?');">-</button>
                 </span>
                 <?= FormHelper::end() ?>
 

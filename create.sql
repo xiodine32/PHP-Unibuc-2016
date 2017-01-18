@@ -68,3 +68,12 @@ CREATE TABLE settings
 );
 CREATE UNIQUE INDEX settings_name_uindex
   ON settings (name);
+
+
+CREATE TABLE caches
+(
+  id         INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  value      TEXT                NOT NULL,
+  name       VARCHAR(255)        NOT NULL,
+  expires_at DATETIME            NOT NULL
+);

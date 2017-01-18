@@ -3,4 +3,9 @@
 # BOOL_VALUES
 # json_values
 #
-DISABLE_REGISTER
+DEBUG | false
+DISABLE_REGISTER | false
+COLLAPSE | false
+subreddits | ["books", "bookporn", "ebooks", "bookdownloads"]
+cache | 3600
+pagination | 10

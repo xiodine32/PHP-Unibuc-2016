@@ -13,6 +13,7 @@ use App\Request;
 use App\Response;
 use App\Settings;
 use App\View;
+use Models\Book;
 use Models\User;
 
 class Index extends ControllerAdmin
@@ -27,6 +28,7 @@ class Index extends ControllerAdmin
         $request->set('users', User::all());
         Categories::addTreeToRequest($request);
         $request->set('settings', Settings::getAllSettings());
+        $request->set('books', Book::all());
         return new View("admin.index");
     }
 }

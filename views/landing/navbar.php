@@ -37,9 +37,9 @@ if (empty($engine)) die("no engine");
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="jumbotron" style="margin-top: -20px;">
+<div class="jumbotron landing">
     <div class="text-center">
         <h1>bibl.io</h1>
-        <h2>For all your reading needs</h2>
+        <h2>for all your reading needs</h2>
     </div>
 </div>

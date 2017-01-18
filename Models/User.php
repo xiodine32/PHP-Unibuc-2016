@@ -17,14 +17,15 @@ use App\Model;
  * @property string name
  * @property string email
  * @property string password
+ * @property-write string encrypted
  */
 class User extends Model
 {
     const ADMINISTRATOR = "Administrator";
     const EDITOR = "Editor";
 
-    static $required = ['name', 'email', 'password'];
-    protected $fillable = ['name', 'email', 'password'];
+    static $required = ['name', 'email', 'encrypted'];
+    protected $fillable = ['name', 'email', 'encrypted'];
 
     public function hasRole($role)
     {
@@ -48,7 +49,7 @@ class User extends Model
         return $return;
     }
 
-    public function setPassword($password)
+    public function setEncrypted($password)
     {
         // overriding default setter with encryption.
         $this->password = password_hash($password, PASSWORD_BCRYPT);
