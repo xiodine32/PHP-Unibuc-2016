@@ -1,3 +1,6 @@
+body {
+    background-color: #f5f8fa;
+}
 @-moz-document url-prefix() {
     fieldset {
         display: table-cell;
@@ -64,4 +67,9 @@
     background-attachment: fixed;
     background-position-y: 78%;
     text-shadow: 0 0 15px #fff;
+    color: #000;
+}
+
+.nav.nav-tabs > li > a {
+    color: #333;
 }

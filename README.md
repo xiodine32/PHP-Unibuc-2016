@@ -19,5 +19,5 @@ Requirements (in romanian)
 * Va exista posibilitatea de generare si vizualizare de rapoarte (nu doar HTML si PHP).
 * Elemente statistice ale site-ului: vizitatori, accesari etc.
 * Formular de contact, cu posibilitatea trimiterii de email-uri.
-* Integrarea de informatii (nu pagini în întregime, ci doar elemente ale acestora) de pe alte site-uri.
+* ~~Integrarea de informatii (nu pagini în întregime, ci doar elemente ale acestora) de pe alte site-uri.~~
 * ~~Terminarea sesiunii.~~
