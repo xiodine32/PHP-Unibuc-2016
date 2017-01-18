@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>5129be13-d3cb-4620-a28a-5168d3a5a99b</OriginalElement>
+  <nodes>
+    <node x="105.50000000000001" y="170.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.books</node>
+    <node x="-22.0" y="-9.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.users</node>
+    <node x="407.0" y="37.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.statistics</node>
+    <node x="205.0" y="397.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.settings</node>
+    <node x="0.0" y="397.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.caches</node>
+    <node x="216.0" y="-17.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.categories</node>
+    <node x="0.0" y="560.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.userroles</node>
+    <node x="390.0" y="397.0">5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.roles</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.categories" target="5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.categories">
+      <point x="-35.0" y="48.0" />
+      <point x="251.0" y="99.0" />
+      <point x="196.0" y="99.0" />
+      <point x="196.0" y="31.0" />
+      <point x="-70.0" y="-0.0" />
+    </edge>
+    <edge source="5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.books" target="5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.users">
+      <point x="-55.0" y="-92.0" />
+      <point x="137.5" y="147.5" />
+      <point x="80.0" y="147.5" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.books" target="5129be13-d3cb-4620-a28a-5168d3a5a99b.TABLE:project.categories">
+      <point x="55.0" y="-92.0" />
+      <point x="247.5" y="147.5" />
+      <point x="305.0" y="147.5" />
+      <point x="35.0" y="48.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="322.5" y="316.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

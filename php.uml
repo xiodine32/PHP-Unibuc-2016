@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>X:/php</OriginalElement>
+  <nodes>
+    <node x="604.0" y="1686.0">\App\Redirect</node>
+    <node x="1018.0" y="685.0">\Models\User</node>
+    <node x="796.0" y="762.5">\Models\Setting</node>
+    <node x="1114.0" y="1585.0">\App\FileData</node>
+    <node x="1400.0" y="751.5">\Models\Cache</node>
+    <node x="462.0" y="1686.0">\App\View</node>
+    <node x="1813.5" y="1236.5">\Controllers\Controller404</node>
+    <node x="1960.5" y="1225.0">\Controllers\Controller505</node>
+    <node x="0.0" y="2013.0">\App\Settings</node>
+    <node x="1879.0" y="1585.0">\App\Database</node>
+    <node x="934.0" y="1686.0">\App\Json</node>
+    <node x="315.0" y="2013.0">\App\Session</node>
+    <node x="987.0" y="1414.0">\Controllers\Admin\Index</node>
+    <node x="1843.0" y="1414.0">\Controllers\Admin\Settings</node>
+    <node x="1519.5" y="1236.5">\Controllers\Index</node>
+    <node x="0.0" y="1047.0">\App\Request</node>
+    <node x="1543.0" y="1585.0">\App\FormHelper</node>
+    <node x="2191.5" y="1236.5">\Controllers\Login</node>
+    <node x="0.0" y="740.5">\Models\Category</node>
+    <node x="275.0" y="707.5">\Models\Statistic</node>
+    <node x="1372.5" y="1236.5">\Controllers\Register</node>
+    <node x="591.0000000000001" y="0.0">\App\Model</node>
+    <node x="1628.5" y="1047.0">\App\Controller</node>
+    <node x="1385.0" y="1414.0">\Controllers\Admin\Contact</node>
+    <node x="807.0" y="2013.0">\App\CacheManager</node>
+    <node x="1655.0" y="696.5">\Models\Book</node>
+    <node x="604.0" y="2013.0">\App\SuggestionEngine</node>
+    <node x="1198.5" y="1203.0">\Controllers\Admin\ControllerAdmin</node>
+    <node x="634.0" y="796.0">\Models\Role</node>
+    <node x="1186.0" y="1414.0">\Controllers\Admin\Books</node>
+    <node x="0.0" y="1585.0">\App\ViewRenderer</node>
+    <node x="703.5" y="1585.0">\App\Response</node>
+    <node x="1666.5" y="1236.5">\Controllers\Logout</node>
+    <node x="1584.0" y="1381.0">\Controllers\Admin\Stats</node>
+    <node x="439.0" y="1833.0">\App\Partial</node>
+    <node x="744.0" y="1381.0">\Controllers\Admin\Categories</node>
+    <node x="545.0" y="1414.0">\Controllers\Admin\Users</node>
+    <node x="779.0" y="1686.0">\App\File</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\Controllers\Admin\ControllerAdmin" target="\App\Controller">
+      <point x="0.0" y="-59.0" />
+      <point x="1275.5" y="1163.0" />
+      <point x="1643.0" y="1163.0" />
+      <point x="-87.0" y="48.0" />
+    </edge>
+    <edge source="\Controllers\Controller505" target="\App\Controller">
+      <point x="0.0" y="-37.0" />
+      <point x="2066.0" y="1173.0" />
+      <point x="1788.0" y="1173.0" />
+      <point x="58.0" y="48.0" />
+    </edge>
+    <edge source="\Controllers\Index" target="\App\Controller">
+      <point x="0.0" y="-25.5" />
+      <point x="1583.0" y="1183.0" />
+      <point x="1701.0" y="1183.0" />
+      <point x="-29.0" y="48.0" />
+    </edge>
+    <edge source="\Models\Statistic" target="\App\Model">
+      <point x="0.0" y="-136.0" />
+      <point x="444.5" y="655.0" />
+      <point x="722.1428571428572" y="655.0" />
+      <point x="-174.8571428571429" y="312.5" />
+    </edge>
+    <edge source="\App\Redirect" target="\App\Response">
+      <point x="0.0" y="-48.5" />
+      <point x="681.5" y="1666.0" />
+      <point x="748.875" y="1666.0" />
+      <point x="-15.125" y="25.5" />
+    </edge>
+    <edge source="\Controllers\Admin\Contact" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-25.5" />
+      <point x="1474.5" y="1361.0" />
+      <point x="1297.5" y="1361.0" />
+      <point x="22.0" y="59.0" />
+    </edge>
+    <edge source="\Controllers\Logout" target="\App\Controller">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="\Controllers\Controller404" target="\App\Controller">
+      <point x="0.0" y="-25.5" />
+      <point x="1877.0" y="1183.0" />
+      <point x="1759.0" y="1183.0" />
+      <point x="29.0" y="48.0" />
+    </edge>
+    <edge source="\Models\User" target="\App\Model">
+      <point x="0.0" y="-158.5" />
+      <point x="1199.0" y="665.0" />
+      <point x="984.4285714285713" y="665.0" />
+      <point x="87.42857142857122" y="312.5" />
+    </edge>
+    <edge source="\Models\Category" target="\App\Model">
+      <point x="0.0" y="-103.0" />
+      <point x="127.5" y="645.0" />
+      <point x="634.7142857142858" y="645.0" />
+      <point x="-262.28571428571433" y="312.5" />
+    </edge>
+    <edge source="\Controllers\Admin\Stats" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-58.5" />
+      <point x="1703.5" y="1351.0" />
+      <point x="1319.5" y="1351.0" />
+      <point x="44.0" y="59.0" />
+    </edge>
+    <edge source="\Controllers\Admin\Settings" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-25.5" />
+      <point x="1932.5" y="1341.0" />
+      <point x="1341.5" y="1341.0" />
+      <point x="66.0" y="59.0" />
+    </edge>
+    <edge source="\Models\Setting" target="\App\Model">
+      <point x="0.0" y="-81.0" />
+      <point x="-1.1368683772161603E-13" y="312.5" />
+    </edge>
+    <edge source="\Controllers\Admin\Users" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-25.5" />
+      <point x="634.5" y="1341.0" />
+      <point x="1209.5" y="1341.0" />
+      <point x="-66.0" y="59.0" />
+    </edge>
+    <edge source="\Controllers\Admin\Books" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="\Models\Cache" target="\App\Model">
+      <point x="0.0" y="-92.0" />
+      <point x="1517.5" y="655.0" />
+      <point x="1071.8571428571427" y="655.0" />
+      <point x="174.85714285714255" y="312.5" />
+    </edge>
+    <edge source="\Controllers\Admin\Index" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-25.5" />
+      <point x="1076.5" y="1361.0" />
+      <point x="1253.5" y="1361.0" />
+      <point x="-22.0" y="59.0" />
+    </edge>
+    <edge source="\App\Json" target="\App\Response">
+      <point x="0.0" y="-48.5" />
+      <point x="1001.5" y="1656.0" />
+      <point x="809.375" y="1656.0" />
+      <point x="45.375" y="25.5" />
+    </edge>
+    <edge source="\App\View" target="\App\Response">
+      <point x="0.0" y="-48.5" />
+      <point x="523.0" y="1656.0" />
+      <point x="718.625" y="1656.0" />
+      <point x="-45.375" y="25.5" />
+    </edge>
+    <edge source="\Controllers\Admin\Categories" target="\Controllers\Admin\ControllerAdmin">
+      <point x="0.0" y="-58.5" />
+      <point x="855.5" y="1351.0" />
+      <point x="1231.5" y="1351.0" />
+      <point x="-44.0" y="59.0" />
+    </edge>
+    <edge source="\App\File" target="\App\Response">
+      <point x="0.0" y="-48.5" />
+      <point x="846.5" y="1666.0" />
+      <point x="779.125" y="1666.0" />
+      <point x="15.125" y="25.5" />
+    </edge>
+    <edge source="\Controllers\Register" target="\App\Controller">
+      <point x="0.0" y="-25.5" />
+      <point x="1436.0" y="1173.0" />
+      <point x="1672.0" y="1173.0" />
+      <point x="-58.0" y="48.0" />
+    </edge>
+    <edge source="\Models\Role" target="\App\Model">
+      <point x="0.0" y="-47.5" />
+      <point x="705.0" y="665.0" />
+      <point x="809.5714285714287" y="665.0" />
+      <point x="-87.42857142857144" y="312.5" />
+    </edge>
+    <edge source="\App\Partial" target="\App\View">
+      <point x="0.0" y="-37.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="\Models\Book" target="\App\Model">
+      <point x="0.0" y="-147.0" />
+      <point x="1828.5" y="645.0" />
+      <point x="1159.2857142857142" y="645.0" />
+      <point x="262.2857142857141" y="312.5" />
+    </edge>
+    <edge source="\Controllers\Login" target="\App\Controller">
+      <point x="0.0" y="-25.5" />
+      <point x="2263.0" y="1163.0" />
+      <point x="1817.0" y="1163.0" />
+      <point x="87.0" y="48.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000004" x="1052.333333333333" y="1032.5357142857151" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Constants</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

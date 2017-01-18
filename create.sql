@@ -53,11 +53,12 @@ CREATE TABLE statistics
   id              INT(11) PRIMARY KEY                NOT NULL AUTO_INCREMENT,
   request_method  VARCHAR(10)                        NOT NULL,
   query_string    TEXT                               NOT NULL,
-  http_referer    TEXT                               NOT NULL,
+  http_referer    TEXT,
   http_user_agent TEXT                               NOT NULL,
   remote_addr     TEXT                               NOT NULL,
-  request_uri     TEXT                               NOT NULL,
-  created_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+  request_uri     VARCHAR(100)                       NOT NULL,
+  created_at      DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  session_id      VARCHAR(60)
 );
 CREATE TABLE userroles
 (
