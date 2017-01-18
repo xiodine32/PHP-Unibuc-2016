@@ -11,8 +11,15 @@ namespace App;
 
 class FormHelper
 {
+    const DEFAULT_SIZE = 4;
+    private static $size = null;
     public static function start($action, $method, $title, $optionals = [])
     {
+        self::$size = self::DEFAULT_SIZE;
+
+        if (!empty($optionals['size']))
+            self::$size = intval($optionals['size']);
+
         self::assure($optionals, 'action', $action);
         self::assure($optionals, 'method', $method);
 
@@ -80,16 +87,18 @@ class FormHelper
         self::assure($optionals, 'class', 'form-control');
         self::assure($optionals, 'placeholder', $title);
 
+        list($size, $nsize) = self::computeSizes();
 
         $text = "<div class=\"form-group\">\n";
-        $text .= "<label class=\"col-sm-4 control-label\" for=\"{$id}\">{$title}:</label>";
-        $text .= "<div class=\"col-sm-4\">\n";
+        $text .= "<label class=\"col-sm-{$nsize} control-label\" for=\"{$id}\">{$title}:</label>";
+        $text .= "<div class=\"col-sm-{$size}\">\n";
         $text .= "<input " . self::aToM($optionals) . ">";
         $text .= "</div>\n";
         $text .= "</div>\n";
 
         return $text;
     }
+
 
     private static function textarea($id, $name, $title, $optionals = [])
     {
@@ -103,14 +112,23 @@ class FormHelper
         self::assure($optionals, 'class', 'form-control');
         self::assure($optionals, 'placeholder', $title);
 
+        list($size, $nsize) = self::computeSizes();
+
         $text = "<div class=\"form-group\">\n";
-        $text .= "<label class=\"col-sm-4 control-label\" for=\"{$id}\">{$title}:</label>";
-        $text .= "<div class=\"col-sm-4\">\n";
+        $text .= "<label class=\"col-sm-{$nsize} control-label\" for=\"{$id}\">{$title}:</label>";
+        $text .= "<div class=\"col-sm-{$size}\">\n";
         $text .= "<textarea " . self::aToM($optionals) . ">{$content}</textarea>";
         $text .= "</div>\n";
         $text .= "</div>\n";
         return $text;
 
+    }
+
+    private static function computeSizes()
+    {
+        $size = self::$size;
+        $nsize = (12 - self::$size) / 2;
+        return [$size, $nsize];
     }
 
     private static function select($id, $name, $title, $optionals = [])
@@ -128,9 +146,11 @@ class FormHelper
         self::assure($optionals, 'class', 'form-control');
         self::assure($optionals, 'placeholder', $title);
 
+        list($size, $nsize) = self::computeSizes();
+
         $text = "<div class=\"form-group\">\n";
-        $text .= "<label class=\"col-sm-4 control-label\" for=\"{$id}\">{$title}:</label>";
-        $text .= "<div class=\"col-sm-4\">\n";
+        $text .= "<label class=\"col-sm-{$nsize} control-label\" for=\"{$id}\">{$title}:</label>";
+        $text .= "<div class=\"col-sm-{$size}\">\n";
         $text .= "<select " . self::aToM($optionals) . ">{$content}</select>";
         $text .= "</div>\n";
         $text .= "</div>\n";
@@ -146,9 +166,13 @@ class FormHelper
         self::assure($optionals, 'class', 'btn btn-lg btn-default');
 
         $text = "<div class=\"form-group\">\n";
+
+        list($size, $nsize) = self::computeSizes();
+
+
         if (!empty($optionals['label']))
-            $text .= "<label class=\"col-sm-4 control-label\" for=\"{$id}\">{$optionals['label']}:</label>";
-        $text .= "<div class=\"col-sm-4 " . (empty($optionals['label']) ? 'col-sm-offset-4' : '') . "\">\n";
+            $text .= "<label class=\"col-sm-{$nsize} control-label\" for=\"{$id}\">{$optionals['label']}:</label>";
+        $text .= "<div class=\"col-sm-{$size} " . (empty($optionals['label']) ? "col-sm-offset-{$nsize}" : "") . "\">\n";
         $text .= "<button " . self::aToM($optionals) . ">{$title}</button>";
         $text .= "</div>\n";
         $text .= "</div>\n";

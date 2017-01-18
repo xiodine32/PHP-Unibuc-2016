@@ -28,6 +28,16 @@ class Index extends ControllerAdmin
         $request->set('users', User::all());
         Categories::addTreeToRequest($request);
         $request->set('settings', Settings::getAllSettings());
+
+        $str = '';
+        $v = [];
+
+        if ($item = $request->get('category')) {
+            $v = [intval($item)];
+            $str = 'WHERE category_id = ?';
+        }
+
+        $request->set('breadcrumbs', Book::all($str, $v));
         $request->set('books', Book::all());
         return new View("admin.index");
     }

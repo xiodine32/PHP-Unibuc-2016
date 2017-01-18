@@ -56,7 +56,8 @@ class Request
         $list = $this->$item;
         if (!isset($list[$name]))
             return $default;
-
+        if (is_string($list[$name]))
+            return htmlspecialchars($list[$name], ENT_QUOTES);
         return $list[$name];
     }
 
@@ -122,7 +123,7 @@ class Request
     }
 
     /**
-     * @param string $name
+     * @param string[]|string $name
      * @return boolean
      */
     public function hasPost($name = null)
@@ -131,7 +132,7 @@ class Request
     }
 
     /**
-     * @param string $name
+     * @param string[]|string $name
      * @return boolean
      */
     public function hasFiles($name = null)
@@ -140,7 +141,7 @@ class Request
     }
 
     /**
-     * @param string $name
+     * @param string[]|string $name
      * @return bool
      */
     public function hasViewbag($name = null)

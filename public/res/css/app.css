@@ -63,11 +63,15 @@ body {
 .jumbotron.landing {
     margin-top: -20px;
     background-image: url('../img/back.bmp');
-    background-size: cover;
     background-attachment: fixed;
     background-position-y: 78%;
+    background-size: cover;
     text-shadow: 0 0 15px #fff;
     color: #000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .nav.nav-tabs > li > a {

@@ -13,6 +13,7 @@ use App\Controller;
 use App\Redirect;
 use App\Request;
 use App\Session;
+use Models\Category;
 use Models\User;
 
 abstract class ControllerAdmin extends Controller
@@ -26,7 +27,10 @@ abstract class ControllerAdmin extends Controller
     {
         if (!$this->authenticated($request->sessionObject()))
             return new Redirect("/login");
-        return $this->viewAdmin($request);
+        $viewAdmin = $this->viewAdmin($request);
+        $value = Category::all('WHERE parent_id IS NULL');
+        $request->set('titles', $value);
+        return $viewAdmin;
     }
 
     private function authenticated(Session $session)

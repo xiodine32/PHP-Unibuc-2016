@@ -11,7 +11,7 @@ namespace App;
 
 class View extends Response
 {
-    private $vr;
+    protected $vr;
 
     function __construct($view)
     {

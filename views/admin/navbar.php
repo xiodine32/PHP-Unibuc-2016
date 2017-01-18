@@ -28,8 +28,17 @@ if (empty($engine)) die("no engine");
             <ul class="nav navbar-nav">
                 <li class="<?= $engine->is('/admin/') ? 'active' : '' ?>"><a href="<?= $engine->route('/admin/') ?>"><i
                                 class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <?php foreach ($request->viewbag('titles') as $category): ?>
+                    <li><a href="<?= $engine->route("/admin/?category={$category->id}") ?>"><?= $category->name ?></a>
+                    </li>
+                <?php endforeach ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="<?= $engine->route("/admin/contact") ?>">
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Contact Us
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">

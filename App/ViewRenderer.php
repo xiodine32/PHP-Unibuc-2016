@@ -31,6 +31,15 @@ class ViewRenderer
         $this->inlineJS = "";
     }
 
+    /**
+     * @return ViewRenderer|null
+     */
+    public function getNext()
+    {
+        return $this->next;
+    }
+
+
     public function propagate()
     {
         if ($this->next == null)

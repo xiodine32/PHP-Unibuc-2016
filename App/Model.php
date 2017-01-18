@@ -86,10 +86,10 @@ class Model
         return $result;
     }
 
-    public static function all($order = '')
+    public static function all($order = '', $assoc = [])
     {
         $table = (new static)->tableName();
-        $result = Database::singleton()->getAll("SELECT * FROM {$table} {$order}");
+        $result = Database::singleton()->getAll("SELECT * FROM {$table} {$order}", $assoc);
         $returnValues = [];
         foreach ($result as $item) {
             $item = new static($item);

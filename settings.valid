@@ -9,3 +9,9 @@ COLLAPSE | false
 subreddits | ["books", "bookporn", "ebooks", "bookdownloads"]
 cache | 3600
 pagination | 10
+statistics | []
+mail_server | "smtp.mailtrap.io"
+mail_username | ""
+mail_password | ""
+mail_security | "tls"
+mail_port | "465"

@@ -37,6 +37,9 @@ class Settings extends ControllerAdmin
         if ($name = $request->post('save_number')) {
             S::set($name, intval($request->post($name)));
         }
+        if ($name = $request->post('save_string')) {
+            S::set($name, $request->post($name));
+        }
         return new Redirect("/admin/");
     }
 }

@@ -1,5 +1,7 @@
 {
   "require": {
+    "golonka/bbcodeparser": "^2.2",
+    "phpmailer/phpmailer": "^5.2"
   },
   "autoload": {
     "psr-4": {

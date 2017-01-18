@@ -19,7 +19,8 @@ use Models\User;
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <a href="#" data-toggle="collapse" data-target="#targetcollapse">
+                    <a href="#targetcollapse" data-toggle="collapse" data-target="#targetcollapse"
+                       onclick="return false;">
                         Tools
                     </a>
                 </h3>
@@ -82,7 +83,7 @@ use Models\User;
         <hr>
     <?php endif ?>
     <div class='row'>
-        <?php foreach ($request->viewbag('books') as $book): ?>
+        <?php foreach ($request->viewbag('breadcrumbs') as $book): ?>
             <?php breadcrumb($book); ?>
         <?php endforeach ?>
     </div>
